@@ -69,5 +69,33 @@ describe('Shop', () => {
 
       expect(items).toEqual([itemAfter]);
     });
+
+    it('aged brie increases in quality by 1', () => {
+      itemBefore.name = 'Aged Brie';
+      itemBefore.sellIn = 2;
+      itemBefore.quality = 3;
+
+      itemAfter.name = 'Aged Brie';
+      itemAfter.sellIn = 1;
+      itemAfter.quality = 4;
+
+      const items = gildedRose.updateQuality();
+
+      expect(items).toEqual([itemAfter]);
+    });
+
+    it('aged brie increases in quality by 2 when sellIn negative', () => {
+      itemBefore.name = 'Aged Brie';
+      itemBefore.sellIn = -1;
+      itemBefore.quality = 3;
+
+      itemAfter.name = 'Aged Brie';
+      itemAfter.sellIn = -2;
+      itemAfter.quality = 5;
+
+      const items = gildedRose.updateQuality();
+
+      expect(items).toEqual([itemAfter]);
+    });
   });
 });
