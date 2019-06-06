@@ -4,7 +4,7 @@
   "description": "Gilded Rose kata in Javascript with Jasmine",
   "scripts": {
     "test": "nyc jasmine",
-    "posttest": "eslint src"
+    "posttest": "eslint src spec"
   },
   "repository": {
     "type": "git",
@@ -28,6 +28,7 @@
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.17.3",
+    "eslint-plugin-jasmine": "^2.10.1",
     "jasmine": "^3.2.0",
     "nyc": "^14.1.1"
   },
