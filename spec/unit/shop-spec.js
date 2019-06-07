@@ -192,5 +192,17 @@ describe('Shop', () => {
 
       expect(items).toEqual([itemAfter]);
     });
+
+    it('sulfras does not decrease sellIn', () => {
+      itemBefore.name = 'Sulfuras, Hand of Ragnaros';
+      itemBefore.sellIn = 10;
+
+      itemAfter.name = 'Sulfuras, Hand of Ragnaros';
+      itemAfter.sellIn = 10;
+
+      const items = gildedRose.updateSellIn();
+
+      expect(items).toEqual([itemAfter]);
+    });
   });
 });
