@@ -97,5 +97,33 @@ describe('Shop', () => {
 
       expect(items).toEqual([itemAfter]);
     });
+
+    it('sulfras does not decrease sellIn or in quality with negative sellIn', () => {
+      itemBefore.name = 'Sulfuras, Hand of Ragnaros';
+      itemBefore.sellIn = -1;
+      itemBefore.quality = 5;
+
+      itemAfter.name = 'Sulfuras, Hand of Ragnaros';
+      itemAfter.sellIn = -1;
+      itemAfter.quality = 5;
+
+      const items = gildedRose.updateQuality();
+
+      expect(items).toEqual([itemAfter]);
+    });
+
+    it('sulfras does not decrease sellIn or in quality with positive sellIn', () => {
+      itemBefore.name = 'Sulfuras, Hand of Ragnaros';
+      itemBefore.sellIn = 1;
+      itemBefore.quality = 50;
+
+      itemAfter.name = 'Sulfuras, Hand of Ragnaros';
+      itemAfter.sellIn = 1;
+      itemAfter.quality = 50;
+
+      const items = gildedRose.updateQuality();
+
+      expect(items).toEqual([itemAfter]);
+    });
   });
 });
