@@ -1,25 +1,25 @@
 const { Shop } = require('../../src/gilded_rose.js');
 
 describe('Shop', () => {
+  let itemBefore;
+  let itemAfter;
+  let gildedRose;
+
+  beforeEach(() => {
+    itemBefore = jasmine.createSpyObj('item', ['name', 'sellIn', 'quality']);
+    itemBefore.name = 'foo';
+    itemBefore.sellIn = 0;
+    itemBefore.quality = 0;
+
+    itemAfter = jasmine.createSpyObj('item', ['name', 'sellIn', 'quality']);
+    itemAfter.name = 'foo';
+    itemAfter.sellIn = 0;
+    itemAfter.quality = 0;
+
+    gildedRose = new Shop([itemBefore]);
+  });
+
   describe('updateQuality', () => {
-    let itemBefore;
-    let itemAfter;
-    let gildedRose;
-
-    beforeEach(() => {
-      itemBefore = jasmine.createSpyObj('item', ['name', 'sellIn', 'quality']);
-      itemBefore.name = 'foo';
-      itemBefore.sellIn = 0;
-      itemBefore.quality = 0;
-
-      itemAfter = jasmine.createSpyObj('item', ['name', 'sellIn', 'quality']);
-      itemAfter.name = 'foo';
-      itemAfter.sellIn = 0;
-      itemAfter.quality = 0;
-
-      gildedRose = new Shop([itemBefore]);
-    });
-
     it('decreases sellIn and quality by 1', () => {
       itemBefore.sellIn = 2;
       itemBefore.quality = 5;
@@ -178,6 +178,17 @@ describe('Shop', () => {
       itemAfter.quality = 0;
 
       const items = gildedRose.updateQuality();
+
+      expect(items).toEqual([itemAfter]);
+    });
+  });
+
+  describe('updateSellIn', () => {
+    it('descreases sellIn by 1', () => {
+      itemBefore.sellIn = 10;
+      itemAfter.sellIn = 9;
+
+      const items = gildedRose.updateSellIn();
 
       expect(items).toEqual([itemAfter]);
     });

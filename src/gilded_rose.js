@@ -46,6 +46,13 @@ class Shop {
 
     return this.items;
   }
+
+  updateSellIn() {
+    for (let i = 0; i < this.items.length; i += 1) {
+      this.items[i].sellIn = this.items[i].sellIn - 1;
+    }
+    return this.items;
+  }
 }
 module.exports = {
   Item,
