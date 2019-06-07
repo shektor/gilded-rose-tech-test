@@ -125,5 +125,61 @@ describe('Shop', () => {
 
       expect(items).toEqual([itemAfter]);
     });
+
+    it('backstage passes increase in quality by 1 when sellIn above 10', () => {
+      itemBefore.name = 'Backstage passes to a TAFKAL80ETC concert';
+      itemBefore.sellIn = 11;
+      itemBefore.quality = 20;
+
+      itemAfter.name = 'Backstage passes to a TAFKAL80ETC concert';
+      itemAfter.sellIn = 10;
+      itemAfter.quality = 21;
+
+      const items = gildedRose.updateQuality();
+
+      expect(items).toEqual([itemAfter]);
+    });
+
+    it('backstage passes increase in quality by 2 when sellIn 10 or less', () => {
+      itemBefore.name = 'Backstage passes to a TAFKAL80ETC concert';
+      itemBefore.sellIn = 10;
+      itemBefore.quality = 20;
+
+      itemAfter.name = 'Backstage passes to a TAFKAL80ETC concert';
+      itemAfter.sellIn = 9;
+      itemAfter.quality = 22;
+
+      const items = gildedRose.updateQuality();
+
+      expect(items).toEqual([itemAfter]);
+    });
+
+    it('backstage passes increase in quality by 3 when sellIn 5 or less', () => {
+      itemBefore.name = 'Backstage passes to a TAFKAL80ETC concert';
+      itemBefore.sellIn = 5;
+      itemBefore.quality = 40;
+
+      itemAfter.name = 'Backstage passes to a TAFKAL80ETC concert';
+      itemAfter.sellIn = 4;
+      itemAfter.quality = 43;
+
+      const items = gildedRose.updateQuality();
+
+      expect(items).toEqual([itemAfter]);
+    });
+
+    it('backstage passes drop to 0 quality if sellIn is 0', () => {
+      itemBefore.name = 'Backstage passes to a TAFKAL80ETC concert';
+      itemBefore.sellIn = 0;
+      itemBefore.quality = 29;
+
+      itemAfter.name = 'Backstage passes to a TAFKAL80ETC concert';
+      itemAfter.sellIn = -1;
+      itemAfter.quality = 0;
+
+      const items = gildedRose.updateQuality();
+
+      expect(items).toEqual([itemAfter]);
+    });
   });
 });
