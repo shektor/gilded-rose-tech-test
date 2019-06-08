@@ -8,8 +8,7 @@ describe('Gilded Rose', () => {
     const itemArray = [itemOne, itemTwo];
 
     const gildedRose = new Shop(itemArray);
-    gildedRose.updateQuality();
-    const items = gildedRose.updateSellIn();
+    const items = gildedRose.updateItems();
 
     expect(items[0].name).toEqual('foo');
     expect(items[0].sellIn).toEqual(4);

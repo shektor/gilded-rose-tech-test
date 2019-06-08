@@ -19,6 +19,22 @@ describe('Shop', () => {
     gildedRose = new Shop([itemBefore]);
   });
 
+  describe('updateItems', () => {
+    it('calls updateQuality', () => {
+      spyOn(gildedRose, 'updateQuality');
+      gildedRose.updateItems();
+
+      expect(gildedRose.updateQuality).toHaveBeenCalledWith();
+    });
+
+    it('calls updateSellIn', () => {
+      spyOn(gildedRose, 'updateSellIn');
+      gildedRose.updateItems();
+
+      expect(gildedRose.updateSellIn).toHaveBeenCalledWith();
+    });
+  });
+
   describe('updateQuality', () => {
     it('decreases quality by 1', () => {
       itemBefore.sellIn = 2;
