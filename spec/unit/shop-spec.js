@@ -20,30 +20,14 @@ describe('Shop', () => {
   });
 
   describe('updateItems', () => {
-    it('calls updateQuality', () => {
-      spyOn(gildedRose, 'updateQuality');
-      gildedRose.updateItems();
-
-      expect(gildedRose.updateQuality).toHaveBeenCalledWith();
-    });
-
-    it('calls updateSellIn', () => {
-      spyOn(gildedRose, 'updateSellIn');
-      gildedRose.updateItems();
-
-      expect(gildedRose.updateSellIn).toHaveBeenCalledWith();
-    });
-  });
-
-  describe('updateQuality', () => {
-    it('decreases quality by 1', () => {
+    it('decreases quality and sellIn by 1', () => {
       itemBefore.sellIn = 2;
       itemBefore.quality = 5;
 
-      itemAfter.sellIn = 2;
+      itemAfter.sellIn = 1;
       itemAfter.quality = 4;
 
-      const items = gildedRose.updateQuality();
+      const items = gildedRose.updateItems();
 
       expect(items).toEqual([itemAfter]);
     });
@@ -52,10 +36,10 @@ describe('Shop', () => {
       itemBefore.sellIn = 2;
       itemBefore.quality = 0;
 
-      itemAfter.sellIn = 2;
+      itemAfter.sellIn = 1;
       itemAfter.quality = 0;
 
-      const items = gildedRose.updateQuality();
+      const items = gildedRose.updateItems();
 
       expect(items).toEqual([itemAfter]);
     });
@@ -66,10 +50,10 @@ describe('Shop', () => {
       itemBefore.quality = 50;
 
       itemAfter.name = 'Aged Brie';
-      itemAfter.sellIn = 2;
+      itemAfter.sellIn = 1;
       itemAfter.quality = 50;
 
-      const items = gildedRose.updateQuality();
+      const items = gildedRose.updateItems();
 
       expect(items).toEqual([itemAfter]);
     });
@@ -78,10 +62,10 @@ describe('Shop', () => {
       itemBefore.sellIn = -1;
       itemBefore.quality = 50;
 
-      itemAfter.sellIn = -1;
+      itemAfter.sellIn = -2;
       itemAfter.quality = 48;
 
-      const items = gildedRose.updateQuality();
+      const items = gildedRose.updateItems();
 
       expect(items).toEqual([itemAfter]);
     });
@@ -92,10 +76,10 @@ describe('Shop', () => {
       itemBefore.quality = 3;
 
       itemAfter.name = 'Aged Brie';
-      itemAfter.sellIn = 2;
+      itemAfter.sellIn = 1;
       itemAfter.quality = 4;
 
-      const items = gildedRose.updateQuality();
+      const items = gildedRose.updateItems();
 
       expect(items).toEqual([itemAfter]);
     });
@@ -106,15 +90,15 @@ describe('Shop', () => {
       itemBefore.quality = 3;
 
       itemAfter.name = 'Aged Brie';
-      itemAfter.sellIn = -1;
+      itemAfter.sellIn = -2;
       itemAfter.quality = 5;
 
-      const items = gildedRose.updateQuality();
+      const items = gildedRose.updateItems();
 
       expect(items).toEqual([itemAfter]);
     });
 
-    it('sulfras does not decrease in quality with negative sellIn', () => {
+    it('sulfras does not decrease in quality or sellIn with negative sellIn', () => {
       itemBefore.name = 'Sulfuras, Hand of Ragnaros';
       itemBefore.sellIn = -1;
       itemBefore.quality = 5;
@@ -123,12 +107,12 @@ describe('Shop', () => {
       itemAfter.sellIn = -1;
       itemAfter.quality = 5;
 
-      const items = gildedRose.updateQuality();
+      const items = gildedRose.updateItems();
 
       expect(items).toEqual([itemAfter]);
     });
 
-    it('sulfras does not decrease in quality with positive sellIn', () => {
+    it('sulfras does not decrease in quality or sellIn with positive sellIn', () => {
       itemBefore.name = 'Sulfuras, Hand of Ragnaros';
       itemBefore.sellIn = 1;
       itemBefore.quality = 50;
@@ -137,7 +121,7 @@ describe('Shop', () => {
       itemAfter.sellIn = 1;
       itemAfter.quality = 50;
 
-      const items = gildedRose.updateQuality();
+      const items = gildedRose.updateItems();
 
       expect(items).toEqual([itemAfter]);
     });
@@ -148,10 +132,10 @@ describe('Shop', () => {
       itemBefore.quality = 20;
 
       itemAfter.name = 'Backstage passes to a TAFKAL80ETC concert';
-      itemAfter.sellIn = 11;
+      itemAfter.sellIn = 10;
       itemAfter.quality = 21;
 
-      const items = gildedRose.updateQuality();
+      const items = gildedRose.updateItems();
 
       expect(items).toEqual([itemAfter]);
     });
@@ -162,10 +146,10 @@ describe('Shop', () => {
       itemBefore.quality = 20;
 
       itemAfter.name = 'Backstage passes to a TAFKAL80ETC concert';
-      itemAfter.sellIn = 10;
+      itemAfter.sellIn = 9;
       itemAfter.quality = 22;
 
-      const items = gildedRose.updateQuality();
+      const items = gildedRose.updateItems();
 
       expect(items).toEqual([itemAfter]);
     });
@@ -176,10 +160,10 @@ describe('Shop', () => {
       itemBefore.quality = 40;
 
       itemAfter.name = 'Backstage passes to a TAFKAL80ETC concert';
-      itemAfter.sellIn = 5;
+      itemAfter.sellIn = 4;
       itemAfter.quality = 43;
 
-      const items = gildedRose.updateQuality();
+      const items = gildedRose.updateItems();
 
       expect(items).toEqual([itemAfter]);
     });
@@ -190,33 +174,10 @@ describe('Shop', () => {
       itemBefore.quality = 29;
 
       itemAfter.name = 'Backstage passes to a TAFKAL80ETC concert';
-      itemAfter.sellIn = -1;
+      itemAfter.sellIn = -2;
       itemAfter.quality = 0;
 
-      const items = gildedRose.updateQuality();
-
-      expect(items).toEqual([itemAfter]);
-    });
-  });
-
-  describe('updateSellIn', () => {
-    it('descreases sellIn by 1', () => {
-      itemBefore.sellIn = 10;
-      itemAfter.sellIn = 9;
-
-      const items = gildedRose.updateSellIn();
-
-      expect(items).toEqual([itemAfter]);
-    });
-
-    it('sulfras does not decrease sellIn', () => {
-      itemBefore.name = 'Sulfuras, Hand of Ragnaros';
-      itemBefore.sellIn = 10;
-
-      itemAfter.name = 'Sulfuras, Hand of Ragnaros';
-      itemAfter.sellIn = 10;
-
-      const items = gildedRose.updateSellIn();
+      const items = gildedRose.updateItems();
 
       expect(items).toEqual([itemAfter]);
     });
