@@ -8,6 +8,10 @@ class Sulfuras extends Item {
   updateQuality() {
     return this.quality;
   }
+
+  updateSellIn() {
+    return this.sellIn;
+  }
 }
 module.exports = {
   Sulfuras,

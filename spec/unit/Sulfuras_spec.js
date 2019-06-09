@@ -14,4 +14,12 @@ describe('Sulfuras', () => {
       expect(sulfuras.updateQuality()).toEqual(3);
     });
   });
+
+  describe('updateSellIn', () => {
+    it('never decreases', () => {
+      const sulfuras = new Sulfuras(5, 10);
+
+      expect(sulfuras.updateSellIn()).toEqual(5);
+    });
+  });
 });
