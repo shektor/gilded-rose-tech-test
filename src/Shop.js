@@ -11,18 +11,6 @@ class Shop {
     return this.items;
   }
 
-  updateQuality({ sellIn, quality }) {
-    let qualityUpdate = quality;
-
-    if (qualityUpdate > 0) {
-      qualityUpdate -= 1;
-    }
-    if (sellIn < 0 && qualityUpdate > 0) {
-      qualityUpdate -= 1;
-    }
-    return qualityUpdate;
-  }
-
   updateSellIn({ name, sellIn }) {
     let sellInUpdate = sellIn;
 
