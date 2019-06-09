@@ -28,4 +28,32 @@ describe('NormalItem', () => {
       expect(normalItem.updateSellIn()).toEqual(3);
     });
   });
+
+  describe('isQualityBelowMax', () => {
+    it('returns true if quality is below max', () => {
+      const normalItem = new NormalItem('boof', 10, 49);
+
+      expect(normalItem.isQualityBelowMax()).toBe(true);
+    });
+
+    it('returns false if quality equal or above max', () => {
+      const normalItem = new NormalItem('boof', 10, 50);
+
+      expect(normalItem.isQualityBelowMax()).toBe(false);
+    });
+  });
+
+  describe('isSellInNegative', () => {
+    it('returns true if sellIn negative', () => {
+      const normalItem = new NormalItem('boof', -2, 49);
+
+      expect(normalItem.isSellInNegative()).toBe(true);
+    });
+
+    it('returns false if sellIn positive', () => {
+      const normalItem = new NormalItem('boof', 10, 50);
+
+      expect(normalItem.isSellInNegative()).toBe(false);
+    });
+  });
 });

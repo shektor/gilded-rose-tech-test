@@ -20,32 +20,4 @@ describe('AgedBrie', () => {
       expect(agedBrie.updateQuality()).toEqual(50);
     });
   });
-
-  describe('isQualityBelowMax', () => {
-    it('returns true if quality is below max', () => {
-      const agedBrie = new AgedBrie(10, 49);
-
-      expect(agedBrie.isQualityBelowMax()).toBe(true);
-    });
-
-    it('returns false if quality equal or above max', () => {
-      const agedBrie = new AgedBrie(10, 50);
-
-      expect(agedBrie.isQualityBelowMax()).toBe(false);
-    });
-  });
-
-  describe('isSellInNegative', () => {
-    it('returns true if sellIn negative', () => {
-      const agedBrie = new AgedBrie(-2, 49);
-
-      expect(agedBrie.isSellInNegative()).toBe(true);
-    });
-
-    it('returns false if sellIn positive', () => {
-      const agedBrie = new AgedBrie(10, 50);
-
-      expect(agedBrie.isSellInNegative()).toBe(false);
-    });
-  });
 });
