@@ -56,4 +56,18 @@ describe('NormalItem', () => {
       expect(normalItem.isSellInNegative()).toBe(false);
     });
   });
+
+  describe('isQualityPositive', () => {
+    it('returns true if quality positive', () => {
+      const normalItem = new NormalItem('boof', -2, 49);
+
+      expect(normalItem.isQualityPositive()).toBe(true);
+    });
+
+    it('returns false if quality negative', () => {
+      const normalItem = new NormalItem('boof', 10, -3);
+
+      expect(normalItem.isQualityPositive()).toBe(false);
+    });
+  });
 });

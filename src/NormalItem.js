@@ -4,10 +4,10 @@ const MAX_QUALITY = 50;
 
 class NormalItem extends Item {
   updateQuality() {
-    if (this.quality > 0) {
+    if (this.isQualityPositive()) {
       this.quality -= 1;
     }
-    if (this.isSellInNegative() && this.quality > 0) {
+    if (this.isSellInNegative() && this.isQualityPositive()) {
       this.quality -= 1;
     }
 
@@ -29,6 +29,13 @@ class NormalItem extends Item {
 
   isSellInNegative() {
     if (this.sellIn < 0) {
+      return true;
+    }
+    return false;
+  }
+
+  isQualityPositive() {
+    if (this.quality > 0) {
       return true;
     }
     return false;
