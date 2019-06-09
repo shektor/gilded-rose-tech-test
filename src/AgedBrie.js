@@ -1,8 +1,8 @@
-const { Item } = require('./Item.js');
+const { NormalItem } = require('./NormalItem.js');
 
 const MAX_QUALITY = 50;
 
-class AgedBrie extends Item {
+class AgedBrie extends NormalItem {
   constructor(sellIn, quality) {
     super('Aged Brie', sellIn, quality);
   }

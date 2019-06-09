@@ -1,8 +1,8 @@
-const { Item } = require('./Item.js');
+const { NormalItem } = require('./NormalItem.js');
 
 const MAX_QUALITY = 50;
 
-class BackStagePass extends Item {
+class BackStagePass extends NormalItem {
   constructor(sellIn, quality) {
     super('Backstage passes to a TAFKAL80ETC concert', sellIn, quality);
   }
