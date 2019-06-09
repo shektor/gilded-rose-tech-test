@@ -1,4 +1,4 @@
-const { AgedBrie } = require('../../src/item-aged-brie.js');
+const { AgedBrie } = require('../../src/AgedBrie.js');
 
 describe('AgedBrie', () => {
   describe('updateQuality', () => {

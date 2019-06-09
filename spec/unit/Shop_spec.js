@@ -1,4 +1,4 @@
-const { Shop } = require('../../src/gilded_rose.js');
+const { Shop } = require('../../src/Shop.js');
 
 describe('Shop', () => {
   let itemBefore;

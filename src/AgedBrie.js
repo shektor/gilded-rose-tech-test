@@ -1,4 +1,4 @@
-const { Item } = require('./gilded_rose.js');
+const { Item } = require('./Item.js');
 
 const MAX_QUALITY = 50;
 

@@ -1,5 +1,6 @@
-const { Shop, Item } = require('../../src/gilded_rose.js');
-const { AgedBrie } = require('../../src/item-aged-brie.js');
+const { Shop } = require('../../src/Shop.js');
+const { Item } = require('../../src/Item.js');
+const { AgedBrie } = require('../../src/AgedBrie.js');
 const { BackStagePass } = require('../../src/BackStagePass.js');
 
 describe('Gilded Rose', () => {
