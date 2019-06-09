@@ -5,13 +5,7 @@ class Shop {
 
   updateItems() {
     for (let i = 0; i < this.items.length; i += 1) {
-      if (this.items[i].name === 'Aged Brie'
-        || this.items[i].name === 'Backstage passes to a TAFKAL80ETC concert'
-        || this.items[i].name === 'Sulfuras, Hand of Ragnaros') {
-        this.items[i].updateQuality();
-      } else {
-        this.items[i].quality = this.updateQuality(this.items[i]);
-      }
+      this.items[i].updateQuality();
       this.items[i].sellIn = this.updateSellIn(this.items[i]);
     }
     return this.items;

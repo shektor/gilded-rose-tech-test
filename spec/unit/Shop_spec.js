@@ -1,59 +1,20 @@
 const { Shop } = require('../../src/Shop.js');
 
 describe('Shop', () => {
-  let itemBefore;
-  let itemAfter;
-  let gildedRose;
-
-  beforeEach(() => {
-    itemBefore = jasmine.createSpyObj('item', ['name', 'sellIn', 'quality']);
-    itemBefore.name = 'foo';
-    itemBefore.sellIn = 0;
-    itemBefore.quality = 0;
-
-    itemAfter = jasmine.createSpyObj('item', ['name', 'sellIn', 'quality']);
-    itemAfter.name = 'foo';
-    itemAfter.sellIn = 0;
-    itemAfter.quality = 0;
-
-    gildedRose = new Shop([itemBefore]);
-  });
-
   describe('updateItems', () => {
-    it('decreases quality and sellIn by 1', () => {
-      itemBefore.sellIn = 2;
-      itemBefore.quality = 5;
+    it('return updated items', () => {
+      const item = jasmine.createSpyObj('item', ['name', 'sellIn', 'quality', 'updateQuality']);
+      item.name = 'foo';
+      item.sellIn = 1;
+      item.quality = 20;
+      item.updateQuality.and.returnValue(19);
 
-      itemAfter.sellIn = 1;
-      itemAfter.quality = 4;
-
-      const items = gildedRose.updateItems();
-
-      expect(items).toEqual([itemAfter]);
-    });
-
-    it('quality is never negative', () => {
-      itemBefore.sellIn = 2;
-      itemBefore.quality = 0;
-
-      itemAfter.sellIn = 1;
-      itemAfter.quality = 0;
+      const gildedRose = new Shop([item]);
 
       const items = gildedRose.updateItems();
 
-      expect(items).toEqual([itemAfter]);
-    });
-
-    it('quality degrades -2 when sellIn negative', () => {
-      itemBefore.sellIn = -1;
-      itemBefore.quality = 50;
-
-      itemAfter.sellIn = -2;
-      itemAfter.quality = 48;
-
-      const items = gildedRose.updateItems();
-
-      expect(items).toEqual([itemAfter]);
+      expect(items[0].sellIn).toEqual(0);
+      expect(item.updateQuality).toHaveBeenCalledWith();
     });
   });
 });

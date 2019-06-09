@@ -1,13 +1,13 @@
 const { Shop } = require('../../src/Shop.js');
-const { Item } = require('../../src/Item.js');
+const { NormalItem } = require('../../src/NormalItem.js');
 const { AgedBrie } = require('../../src/AgedBrie.js');
 const { BackStagePass } = require('../../src/BackStagePass.js');
 const { Sulfuras } = require('../../src/Sulfuras.js');
 
 describe('Gilded Rose', () => {
   it('updates the quality of items each day', () => {
-    const itemOne = new Item('foo', 5, 0);
-    const itemTwo = new Item('bar', 20, 10);
+    const itemOne = new NormalItem('foo', 5, 0);
+    const itemTwo = new NormalItem('bar', 20, 10);
 
     const itemArray = [itemOne, itemTwo];
 
