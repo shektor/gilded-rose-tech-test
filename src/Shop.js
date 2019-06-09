@@ -17,13 +17,13 @@ class Shop {
     return this.items;
   }
 
-  updateQuality({ name, sellIn, quality }) {
+  updateQuality({ sellIn, quality }) {
     let qualityUpdate = quality;
 
-    if (qualityUpdate > 0 && name !== 'Sulfuras, Hand of Ragnaros') {
+    if (qualityUpdate > 0) {
       qualityUpdate -= 1;
     }
-    if (sellIn < 0 && qualityUpdate > 0 && name !== 'Sulfuras, Hand of Ragnaros') {
+    if (sellIn < 0 && qualityUpdate > 0) {
       qualityUpdate -= 1;
     }
     return qualityUpdate;
