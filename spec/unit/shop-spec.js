@@ -45,11 +45,11 @@ describe('Shop', () => {
     });
 
     it('quality cannot go above 50', () => {
-      itemBefore.name = 'Aged Brie';
+      itemBefore.name = 'Backstage passes to a TAFKAL80ETC concert';
       itemBefore.sellIn = 2;
       itemBefore.quality = 50;
 
-      itemAfter.name = 'Aged Brie';
+      itemAfter.name = 'Backstage passes to a TAFKAL80ETC concert';
       itemAfter.sellIn = 1;
       itemAfter.quality = 50;
 
@@ -64,34 +64,6 @@ describe('Shop', () => {
 
       itemAfter.sellIn = -2;
       itemAfter.quality = 48;
-
-      const items = gildedRose.updateItems();
-
-      expect(items).toEqual([itemAfter]);
-    });
-
-    it('aged brie increases in quality by 1', () => {
-      itemBefore.name = 'Aged Brie';
-      itemBefore.sellIn = 2;
-      itemBefore.quality = 3;
-
-      itemAfter.name = 'Aged Brie';
-      itemAfter.sellIn = 1;
-      itemAfter.quality = 4;
-
-      const items = gildedRose.updateItems();
-
-      expect(items).toEqual([itemAfter]);
-    });
-
-    it('aged brie increases in quality by 2 when sellIn negative', () => {
-      itemBefore.name = 'Aged Brie';
-      itemBefore.sellIn = -1;
-      itemBefore.quality = 3;
-
-      itemAfter.name = 'Aged Brie';
-      itemAfter.sellIn = -2;
-      itemAfter.quality = 5;
 
       const items = gildedRose.updateItems();
 
