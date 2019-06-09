@@ -11,6 +11,12 @@ class NormalItem extends Item {
 
     return this.quality;
   }
+
+  updateSellIn() {
+    this.sellIn -= 1;
+
+    return this.sellIn;
+  }
 }
 module.exports = {
   NormalItem,

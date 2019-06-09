@@ -20,4 +20,12 @@ describe('NormalItem', () => {
       expect(normalItem.updateQuality()).toEqual(18);
     });
   });
+
+  describe('updateSellIn', () => {
+    it('decreases sellIn by 1', () => {
+      const normalItem = new NormalItem('boof', 4, 20);
+
+      expect(normalItem.updateSellIn()).toEqual(3);
+    });
+  });
 });
