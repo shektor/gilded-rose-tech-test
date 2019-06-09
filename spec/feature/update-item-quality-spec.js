@@ -1,5 +1,6 @@
 const { Shop, Item } = require('../../src/gilded_rose.js');
 const { AgedBrie } = require('../../src/item-aged-brie.js');
+const { BackStagePass } = require('../../src/BackStagePass.js');
 
 describe('Gilded Rose', () => {
   it('updates the quality of items each day', () => {
@@ -30,5 +31,18 @@ describe('Gilded Rose', () => {
     expect(items[0].name).toEqual('Aged Brie');
     expect(items[0].sellIn).toEqual(9);
     expect(items[0].quality).toEqual(11);
+  });
+
+  it('updates the quality of Backstage Pass each day', () => {
+    const backStagePass = new BackStagePass(2, 30);
+
+    const itemArray = [backStagePass];
+
+    const gildedRose = new Shop(itemArray);
+    const items = gildedRose.updateItems();
+
+    expect(items[0].name).toEqual('Backstage passes to a TAFKAL80ETC concert');
+    expect(items[0].sellIn).toEqual(1);
+    expect(items[0].quality).toEqual(33);
   });
 });
