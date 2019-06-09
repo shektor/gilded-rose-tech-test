@@ -8,17 +8,24 @@ class AgedBrie extends Item {
   }
 
   updateQuality() {
-    if (this.qualityBelowMax()) {
+    if (this.isQualityBelowMax()) {
       this.quality += 1;
     }
-    if (this.sellIn < 0 && this.qualityBelowMax()) {
+    if (this.isSellInNegative() && this.isQualityBelowMax()) {
       this.quality += 1;
     }
     return this.quality;
   }
 
-  qualityBelowMax() {
+  isQualityBelowMax() {
     if (this.quality < MAX_QUALITY) {
+      return true;
+    }
+    return false;
+  }
+
+  isSellInNegative() {
+    if (this.sellIn < 0) {
       return true;
     }
     return false;
