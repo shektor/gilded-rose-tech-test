@@ -26,29 +26,12 @@ class Shop {
   updateQuality({ name, sellIn, quality }) {
     let qualityUpdate = quality;
 
-    if (name !== 'Backstage passes to a TAFKAL80ETC concert') {
-      if (qualityUpdate > 0 && name !== 'Sulfuras, Hand of Ragnaros') {
-        qualityUpdate -= 1;
-      }
-    } else if (qualityUpdate < 50) {
-      qualityUpdate += 1;
-      if (name === 'Backstage passes to a TAFKAL80ETC concert' && sellIn < 11 && qualityUpdate < 50) {
-        qualityUpdate += 1;
-      }
-      if (name === 'Backstage passes to a TAFKAL80ETC concert' && sellIn < 6 && qualityUpdate < 50) {
-        qualityUpdate += 1;
-      }
+    if (qualityUpdate > 0 && name !== 'Sulfuras, Hand of Ragnaros') {
+      qualityUpdate -= 1;
     }
-    if (sellIn < 0) {
-      if (name !== 'Backstage passes to a TAFKAL80ETC concert') {
-        if (qualityUpdate > 0 && name !== 'Sulfuras, Hand of Ragnaros') {
-          qualityUpdate -= 1;
-        }
-      } else {
-        qualityUpdate -= qualityUpdate;
-      }
+    if (sellIn < 0 && qualityUpdate > 0 && name !== 'Sulfuras, Hand of Ragnaros') {
+      qualityUpdate -= 1;
     }
-
     return qualityUpdate;
   }
 
