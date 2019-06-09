@@ -20,4 +20,18 @@ describe('AgedBrie', () => {
       expect(agedBrie.updateQuality()).toEqual(50);
     });
   });
+
+  describe('qualityBelowMax', () => {
+    it('returns true if quality is below max', () => {
+      const agedBrie = new AgedBrie(10, 49);
+
+      expect(agedBrie.qualityBelowMax()).toBe(true);
+    });
+
+    it('returns false if quality equal or above max', () => {
+      const agedBrie = new AgedBrie(10, 50);
+
+      expect(agedBrie.qualityBelowMax()).toBe(false);
+    });
+  });
 });
