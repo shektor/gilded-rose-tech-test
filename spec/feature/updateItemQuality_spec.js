@@ -3,6 +3,7 @@ const { NormalItem } = require('../../src/NormalItem.js');
 const { AgedBrie } = require('../../src/AgedBrie.js');
 const { BackStagePass } = require('../../src/BackStagePass.js');
 const { Sulfuras } = require('../../src/Sulfuras.js');
+const { Conjured } = require('../../src/Conjured.js');
 
 describe('Gilded Rose', () => {
   it('updates the quality of items each day', () => {
@@ -59,5 +60,18 @@ describe('Gilded Rose', () => {
     expect(items[0].name).toEqual('Sulfuras, Hand of Ragnaros');
     expect(items[0].sellIn).toEqual(40);
     expect(items[0].quality).toEqual(40);
+  });
+
+  it('updates the quality of Conjured each day', () => {
+    const conjured = new Conjured(40, 40);
+
+    const itemArray = [conjured];
+
+    const gildedRose = new Shop(itemArray);
+    const items = gildedRose.updateItems();
+
+    expect(items[0].name).toEqual('Conjured');
+    expect(items[0].sellIn).toEqual(39);
+    expect(items[0].quality).toEqual(38);
   });
 });
